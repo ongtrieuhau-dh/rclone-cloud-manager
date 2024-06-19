@@ -44,6 +44,8 @@ on:
         options:
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+      remotesourcepath:
+        description: "Remote source path"
       remotedest:
         description: "Chọn remote dest"
         required: true
@@ -52,6 +54,8 @@ on:
         options:
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+      remotedestpath:
+        description: "Remote dest path"
 
 jobs:
   rclonecloud:
@@ -73,4 +77,5 @@ jobs:
 
       - name: Run ${{ github.event.inputs.command }}
         run: |
-          rclone ${{ github.event.inputs.command }} ${{ github.event.inputs.remotesource }}:
+          rclone ${{ github.event.inputs.command }} \
+            ${{ github.event.inputs.remotesource }}:${{ github.event.inputs.remotesourcepath }}
