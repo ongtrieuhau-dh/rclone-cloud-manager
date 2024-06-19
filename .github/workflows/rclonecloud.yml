@@ -38,10 +38,10 @@ jobs:
           sudo chmod +x /usr/bin/rclone
           rclone version
 
-      - name: Create rclone config file from secrets
+      - name: Decode and configure rclone from secrets
         run: |
           mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+          echo "${{ secrets.RCLONE_CONF }}" | base64 --decode > ~/.config/rclone/rclone.conf
 
       - name: Test lsd
         run: |
