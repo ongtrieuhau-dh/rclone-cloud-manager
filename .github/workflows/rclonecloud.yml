@@ -38,7 +38,6 @@ on:
           - "version"
       remotesource:
         description: "Chọn remote source"
-        required: true
         default: ""
         type: choice
         options:
@@ -49,7 +48,6 @@ on:
         description: "Remote source path"
       remotedest:
         description: "Chọn remote dest"
-        required: true
         default: ""
         type: choice
         options:
