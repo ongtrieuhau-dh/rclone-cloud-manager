@@ -2,6 +2,22 @@ name: rclonecloud
 on:
   workflow_dispatch:
     inputs:
+      remotesource:
+        description: "Chọn remote source"
+        required: true
+        default: "onedrive-phoai@students.solano.edu"
+        type: choice
+        options:
+          - "onedrive-phoai@students.solano.edu"
+          - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+      remotedest:
+        description: "Chọn remote dest"
+        required: true
+        default: "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+        type: choice
+        options:
+          - "onedrive-phoai@students.solano.edu"
+          - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
       rclone_config_base64:
         description: "Rclone config content in base64"
 
@@ -17,3 +33,11 @@ jobs:
           sudo cp ./bin/rclone /usr/bin/
           sudo chmod +x /usr/bin/rclone
           rclone version
+
+      - name: Create rclone config file from secrets
+        run: |
+          echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
+
+      - name: Test lsd
+        run: |
+          rclone lsd ${{ github.event.inputs.remotesource }}:
