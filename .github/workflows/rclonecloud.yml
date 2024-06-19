@@ -10,6 +10,8 @@ on:
         options:
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+          - "onedrive01"
+          - "onedrive02"
       remotedest:
         description: "Chọn remote dest"
         required: true
@@ -18,6 +20,8 @@ on:
         options:
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+          - "onedrive01"
+          - "onedrive02"
       rclone_config_base64:
         description: "Rclone config content in base64"
 
