@@ -41,7 +41,7 @@ jobs:
       - name: Decode and configure rclone from secrets
         run: |
           mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONF }}" | base64 --decode > ~/.config/rclone/rclone.conf
+          echo "${{ secrets.RCLONE_CONF_BASE64 }}" | base64 --decode > ~/.config/rclone/rclone.conf
 
       - name: Test lsd
         run: |
