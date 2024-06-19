@@ -2,6 +2,40 @@ name: rclonecloud
 on:
   workflow_dispatch:
     inputs:
+      command:
+        description: "Select the rclone command to run"
+        required: true
+        default: "about"
+        type: choice
+        options:
+          - "about"
+          - "bisync"
+          - "copy"
+          - "copyto"
+          - "copyurl"
+          - "delete"
+          - "deletefile"
+          - "hashsum"
+          - "link"
+          - "listremotes"
+          - "ls"
+          - "lsd"
+          - "lsf"
+          - "lsjson"
+          - "lsl"
+          - "mkdir"
+          - "mount"
+          - "move"
+          - "moveto"
+          - "rmdir"
+          - "rmdirs"
+          - "selfupdate"
+          - "size"
+          - "sync"
+          - "test"
+          - "touch"
+          - "tree"
+          - "version"
       remotesource:
         description: "Chọn remote source"
         required: true
@@ -18,8 +52,6 @@ on:
         options:
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
-      rclone_config_base64:
-        description: "Rclone config content in base64"
 
 jobs:
   rclonecloud:
@@ -41,6 +73,4 @@ jobs:
 
       - name: Test lsd
         run: |
-          rclone version
-          echo "${{ github.event.inputs.remotesource }}"
           rclone lsd ${{ github.event.inputs.remotesource }}:
