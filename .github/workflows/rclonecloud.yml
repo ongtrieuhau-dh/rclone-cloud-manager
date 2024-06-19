@@ -83,5 +83,5 @@ jobs:
             remotesource="$remotesource:"
           fi
           rclone ${{ github.event.inputs.command }} \
-            $remotesource ${{ github.event.inputs.remotesourcepath }} \
+            $remotesource${{ github.event.inputs.remotesourcepath }} \
             ${{ github.event.inputs.flags }}
