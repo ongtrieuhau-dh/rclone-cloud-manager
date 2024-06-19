@@ -77,5 +77,9 @@ jobs:
 
       - name: Run ${{ github.event.inputs.command }}
         run: |
+          remotesource="${{ github.event.inputs.remotesource }}"
+          if [[ -n "$remotesource" ]]; then
+            remotesource="$remotesource:"
+          fi
           rclone ${{ github.event.inputs.command }} \
-            ${{ github.event.inputs.remotesource }}:${{ github.event.inputs.remotesourcepath }}
+            $remotesource ${{ github.event.inputs.remotesourcepath }}
