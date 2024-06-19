@@ -71,6 +71,6 @@ jobs:
           mkdir -p ~/.config/rclone
           echo "${{ secrets.RCLONE_CONF_BASE64 }}" | base64 --decode > ~/.config/rclone/rclone.conf
 
-      - name: Test lsd
+      - name: Run ${{ github.event.inputs.command }}
         run: |
-          rclone lsd ${{ github.event.inputs.remotesource }}:
+          rclone ${{ github.event.inputs.command }} ${{ github.event.inputs.remotesource }}:
