@@ -39,9 +39,10 @@ on:
       remotesource:
         description: "Chọn remote source"
         required: true
-        default: "onedrive-phoai@students.solano.edu"
+        default: ""
         type: choice
         options:
+          - ""
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
       remotesourcepath:
@@ -49,9 +50,10 @@ on:
       remotedest:
         description: "Chọn remote dest"
         required: true
-        default: "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+        default: ""
         type: choice
         options:
+          - ""
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
       remotedestpath:
