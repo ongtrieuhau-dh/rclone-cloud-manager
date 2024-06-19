@@ -43,4 +43,4 @@ jobs:
         run: |
           rclone version
           echo "${{ github.event.inputs.remotesource }}"
-          rclone lsd ${{ github.event.inputs.remotesource }}:
+          rclone lsd ${{ github.event.inputs.remotesource }}: --config ~/.config/rclone/rclone.conf
