@@ -1,0 +1,19 @@
+name: rclonecloud
+on:
+  workflow_dispatch:
+    inputs:
+      rclone_config_base64:
+        description: "Rclone config content in base64"
+
+jobs:
+  rclonecloud:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install rclone offline
+        run: |
+          sudo cp ./bin/rclone /usr/bin/
+          sudo chmod +x /usr/bin/rclone
+          rclone version
