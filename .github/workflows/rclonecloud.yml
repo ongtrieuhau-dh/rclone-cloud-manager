@@ -36,8 +36,11 @@ jobs:
 
       - name: Create rclone config file from secrets
         run: |
+          mkdir -p ~/.config/rclone
           echo "${{ secrets.RCLONE_CONF }}" > ~/.config/rclone/rclone.conf
 
       - name: Test lsd
         run: |
+          rclone version
+          echo "${{ github.event.inputs.remotesource }}"
           rclone lsd ${{ github.event.inputs.remotesource }}:
