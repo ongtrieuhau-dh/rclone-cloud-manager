@@ -93,6 +93,14 @@ jobs:
           mkdir -p ./.artifact
           TZ='Asia/Bangkok' date +'%Y%m%d-%H%M' > date.txt
           echo "NOWDATE=$(cat date.txt)" >> $GITHUB_ENV
+          echo "github.event.inputs.remotesource: ${{ github.event.inputs.remotesource }}"
+          echo "github.event.inputs.remotesourcepath: ${{ github.event.inputs.remotesourcepath }}"
+          echo "github.event.inputs.remotedest: ${{ github.event.inputs.remotedest }}"
+          echo "github.event.inputs.remotedestpath: ${{ github.event.inputs.remotedestpath }}"
+          echo "github.event.inputs.flags: ${{ github.event.inputs.flags }}"
+          echo "github.event.inputs.toartifact: ${{ github.event.inputs.toartifact }}"
+          echo "github.event.inputs.flagslogfile: ${{ github.event.inputs.flagslogfile }}"
+          echo "github.event.inputs.flagsloglevel: ${{ github.event.inputs.flagsloglevel }}"
 
       - name: Check Initialize jobs
         run: |
@@ -116,8 +124,13 @@ jobs:
           if [[ -n "$remotesource" ]]; then
             remotesource="$remotesource:"
           fi
+          remotedest="${{ github.event.inputs.remotedest }}"
+          if [[ -n "$remotedest" ]]; then
+            remotedest="$remotedest:"
+          fi
           rclone ${{ github.event.inputs.command }} \
             "$remotesource"${{ github.event.inputs.remotesourcepath }} \
+            "$remotedest"${{ github.event.inputs.remotedestpath }} \
             ${{ github.event.inputs.flags }} \
             ${{ github.event.inputs.toartifact }} \
             ${{ github.event.inputs.flagslogfile }} \
