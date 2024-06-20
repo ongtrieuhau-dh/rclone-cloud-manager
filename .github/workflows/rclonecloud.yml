@@ -137,6 +137,8 @@ jobs:
             ${{ github.event.inputs.flagslogfile }} \
             ${{ github.event.inputs.flagsloglevel }} \
 
+          cp /var/log/workflow.log ./.artifact/logs/
+
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
         if: always()
