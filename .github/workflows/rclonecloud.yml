@@ -145,8 +145,8 @@ jobs:
           if [[ -n "${{ github.event.inputs.flagsloglevel }}" ]]; then
             argBuilder="$argBuilder ${{ github.event.inputs.flagsloglevel }}"
           fi
-          echo "argBuilder::: $argBuilder"       
-          cp /var/log/workflow.log ./.artifact/logs/
+          echo "[argBuilder] ==> $argBuilder"
+          rclone "$argBuilder"
 
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
