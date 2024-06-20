@@ -122,11 +122,11 @@ jobs:
         run: |
           argBuilder="${{ github.event.inputs.command }}"
           if [[ -n "${{ github.event.inputs.remotesource }}" ]]; then
-            argBuilder="${argBuilder} \"${{ github.event.inputs.remotesource }}:${{ github.event.inputs.remotesourcepath }}\""
+            argBuilder="${argBuilder} ${{ github.event.inputs.remotesource }}:${{ github.event.inputs.remotesourcepath }}"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.remotedest }}" ]]; then
-            argBuilder="${argBuilder} \"${{ github.event.inputs.remotedest }}:${{ github.event.inputs.remotedestpath }}\""
+            argBuilder="${argBuilder} ${{ github.event.inputs.remotedest }}:${{ github.event.inputs.remotedestpath }}"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.flags }}" ]]; then
