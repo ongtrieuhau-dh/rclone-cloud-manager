@@ -129,13 +129,22 @@ jobs:
             remotedest="$remotedest:"
           fi
 
-          rclone ${{ github.event.inputs.command }} \
-            "$remotesource"${{ github.event.inputs.remotesourcepath }} \
-            "$remotedest"${{ github.event.inputs.remotedestpath }} \
-            ${{ github.event.inputs.flags }} \
-            ${{ github.event.inputs.toartifact }} \
-            ${{ github.event.inputs.flagslogfile }} \
-            ${{ github.event.inputs.flagsloglevel }} \
+          if [[ -n "$remotedest" ]]; then
+            rclone ${{ github.event.inputs.command }} \
+              "$remotesource"${{ github.event.inputs.remotesourcepath }} \
+              ${{ github.event.inputs.flags }} \
+              ${{ github.event.inputs.toartifact }} \
+              ${{ github.event.inputs.flagslogfile }} \
+              ${{ github.event.inputs.flagsloglevel }} \ 
+          else
+            rclone ${{ github.event.inputs.command }} \
+              "$remotesource"${{ github.event.inputs.remotesourcepath }} \
+              "$remotedest"${{ github.event.inputs.remotedestpath }} \
+              ${{ github.event.inputs.flags }} \
+              ${{ github.event.inputs.toartifact }} \
+              ${{ github.event.inputs.flagslogfile }} \
+              ${{ github.event.inputs.flagsloglevel }} \  
+          fi
 
           cp /var/log/workflow.log ./.artifact/logs/
 
