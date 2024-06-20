@@ -74,6 +74,15 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Initialize jobs
+        run: |
+          mkdir -p ./.artifact
+          echo "NOWDATE=$(date +'%Y%m%d-%H%M')" >> $GITHUB_ENV
+
+      - name: Check Initialize jobs
+        run: |
+          echo "The date variable is $NOWDATE"
+
       - name: Install rclone offline
         run: |
           sudo cp ./bin/rclone /usr/bin/
@@ -83,7 +92,6 @@ jobs:
       - name: Decode and configure rclone from secrets
         run: |
           mkdir -p ~/.config/rclone
-          mkdir -p ./.artifact
           echo "${{ secrets.RCLONE_CONF_BASE64 }}" | base64 --decode > ~/.config/rclone/rclone.conf
 
       - name: Run ${{ github.event.inputs.command }}
@@ -103,6 +111,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: my-artifact
+          name: rclonecloud-artifact-$NOWDATE-${{ github.run_id }}
           path: ./.artifact
           retention-days: 5
