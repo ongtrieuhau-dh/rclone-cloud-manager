@@ -69,14 +69,14 @@ on:
           - " > ./.artifact/output.txt"
       flagslogfile:
         description: "Select flags --log-file"
-        default: ""
+        default: " --log-file ./.artifact/DEBUG.log"
         type: choice
         options:
           - ""
           - " --log-file ./.artifact/DEBUG.log"
       flagsloglevel:
         description: "Select flags --log-level"
-        default: ""
+        default: " --log-level DEBUG"
         type: choice
         options:
           - ""
