@@ -67,6 +67,20 @@ on:
           - ""
           - " > ./.artifact/output.json"
           - " > ./.artifact/output.txt"
+      flagslogfile:
+        description: "Select flags --log-file"
+        default: ""
+        type: choice
+        options:
+          - ""
+          - " --log-file ./.artifact/DEBUG.log"
+      flagsloglevel:
+        description: "Select flags --log-level"
+        default: ""
+        type: choice
+        options:
+          - ""
+          - " --log-level DEBUG"
 jobs:
   rclonecloud:
     runs-on: ubuntu-latest
@@ -106,8 +120,8 @@ jobs:
             "$remotesource"${{ github.event.inputs.remotesourcepath }} \
             ${{ github.event.inputs.flags }} \
             ${{ github.event.inputs.toartifact }} \
-            --log-file ./.artifact/DEBUG.log \
-            --log-level DEBUG
+            ${{ github.event.inputs.flagslogfile }} \
+            ${{ github.event.inputs.flagsloglevel }} \
 
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
