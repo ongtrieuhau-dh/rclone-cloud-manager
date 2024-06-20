@@ -76,7 +76,7 @@ on:
           - " --log-file ./.artifact/DEBUG.log"
       flagsloglevel:
         description: "Select flags --log-level"
-        default: " --log-level DEBUG"
+        default: " "
         type: choice
         options:
           - " "
