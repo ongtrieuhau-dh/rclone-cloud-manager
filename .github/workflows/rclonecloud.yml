@@ -141,10 +141,6 @@ jobs:
             argBuilder="${argBuilder} ${{ github.event.inputs.flags }}"
             echo "$argBuilder"
           fi
-          if [[ -n "${{ github.event.inputs.toartifact }}" ]]; then
-            argBuilder="${argBuilder} ${{ github.event.inputs.toartifact }}"
-            echo "$argBuilder"
-          fi
           if [[ -n "${{ github.event.inputs.flagslogfile }}" ]]; then
             argBuilder="${argBuilder} ${{ github.event.inputs.flagslogfile }}"
             echo "$argBuilder"
@@ -154,7 +150,7 @@ jobs:
             echo "$argBuilder"
           fi
           echo "[argBuilder] ==> $argBuilder"
-          rclone $argBuilder
+          rclone $argBuilder ${{ github.event.inputs.toartifact }}
 
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
