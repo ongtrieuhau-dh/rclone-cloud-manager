@@ -1,4 +1,5 @@
 name: rclonecloud
+
 on:
   workflow_dispatch:
     inputs:
@@ -54,18 +55,18 @@ on:
           - ""
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
-      remotedest:
-        description: "Select remote dest"
-        default: ""
-        type: choice
-        options:
-          - ""
-          - "onedrive-phoai@students.solano.edu"
-          - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
       remotedestpath:
         description: "Remote dest path"
       flags:
         description: "Set flags: --dry-run "
+      toartifact:
+        description: "Select to Artifact"
+        default: ""
+        type: choice
+        options:
+          - ""
+          - " > ./.artifact/output.json"
+          - " > ./.artifact/output.txt"
 jobs:
   rclonecloud:
     runs-on: ubuntu-latest
