@@ -122,35 +122,35 @@ jobs:
         run: |
           argBuilder="${{ github.event.inputs.command }}"
           if [[ -n "${{ github.event.inputs.remotesource }}" ]]; then
-            argBuilder="$argBuilder ${{ github.event.inputs.remotesource }}:"
+            argBuilder="${argBuilder} ${{ github.event.inputs.remotesource }}:"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.remotesourcepath }}" ]]; then
-            argBuilder="$argBuilder${{ github.event.inputs.remotesourcepath }}"
+            argBuilder="${argBuilder}${{ github.event.inputs.remotesourcepath }}"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.remotedest }}" ]]; then
-            argBuilder="$argBuilder ${{ github.event.inputs.remotedest }}:"
+            argBuilder="${argBuilder} ${{ github.event.inputs.remotedest }}:"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.remotedestpath }}" ]]; then
-            argBuilder="$argBuilder${{ github.event.inputs.remotedestpath }}"
+            argBuilder="${argBuilder}${{ github.event.inputs.remotedestpath }}"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.flags }}" ]]; then
-            argBuilder="$argBuilder ${{ github.event.inputs.flags }}"
+            argBuilder="${argBuilder} ${{ github.event.inputs.flags }}"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.toartifact }}" ]]; then
-            argBuilder="$argBuilder ${{ github.event.inputs.toartifact }}"
+            argBuilder="${argBuilder} ${{ github.event.inputs.toartifact }}"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.flagslogfile }}" ]]; then
-            argBuilder="$argBuilder ${{ github.event.inputs.flagslogfile }}"
+            argBuilder="${argBuilder} ${{ github.event.inputs.flagslogfile }}"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.flagsloglevel }}" ]]; then
-            argBuilder="$argBuilder ${{ github.event.inputs.flagsloglevel }}"
+            argBuilder="${argBuilder} ${{ github.event.inputs.flagsloglevel }}"
             echo "$argBuilder"
           fi
           echo "[argBuilder] ==> $argBuilder"
