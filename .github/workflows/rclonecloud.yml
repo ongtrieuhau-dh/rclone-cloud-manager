@@ -85,7 +85,9 @@ jobs:
           fi
           rclone ${{ github.event.inputs.command }} \
             "$remotesource"${{ github.event.inputs.remotesourcepath }} \
-            ${{ github.event.inputs.flags }}
+            ${{ github.event.inputs.flags }} \
+            --log-file ./.artifact/DEBUG.log \
+            --log-level DEBUG
 
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
