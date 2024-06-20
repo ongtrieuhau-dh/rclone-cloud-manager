@@ -130,6 +130,7 @@ jobs:
           fi
 
           if [[ -n "$remotedest" ]]; then
+            echo "EMPTY remotedest"
             rclone ${{ github.event.inputs.command }} \
               "$remotesource"${{ github.event.inputs.remotesourcepath }} \
               ${{ github.event.inputs.flags }} \
@@ -137,6 +138,7 @@ jobs:
               ${{ github.event.inputs.flagslogfile }} \
               ${{ github.event.inputs.flagsloglevel }} \ 
           else
+            echo "WITH remotedest: $remotedest"
             rclone ${{ github.event.inputs.command }} \
               "$remotesource"${{ github.event.inputs.remotesourcepath }} \
               "$remotedest"${{ github.event.inputs.remotedestpath }} \
