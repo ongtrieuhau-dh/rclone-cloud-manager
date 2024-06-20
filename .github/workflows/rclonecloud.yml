@@ -82,6 +82,7 @@ jobs:
       - name: Check Initialize jobs
         run: |
           echo "The date variable is $NOWDATE"
+          echo "env.NOWDATE is ${{ env.NOWDATE }}"
 
       - name: Install rclone offline
         run: |
@@ -111,6 +112,6 @@ jobs:
         uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: rclonecloud-artifact-"$NOWDATE"-${{ github.run_id }}
+          name: rclonecloud-artifact-${{ env.NOWDATE }}-${{ github.run_id }}
           path: ./.artifact
           retention-days: 5
