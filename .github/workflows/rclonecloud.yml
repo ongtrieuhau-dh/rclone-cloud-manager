@@ -72,14 +72,14 @@ on:
         default: " --log-file ./.artifact/DEBUG.log"
         type: choice
         options:
-          - ""
+          - " "
           - " --log-file ./.artifact/DEBUG.log"
       flagsloglevel:
         description: "Select flags --log-level"
         default: " --log-level DEBUG"
         type: choice
         options:
-          - ""
+          - " "
           - " --log-level DEBUG"
 jobs:
   rclonecloud:
@@ -128,6 +128,7 @@ jobs:
           if [[ -n "$remotedest" ]]; then
             remotedest="$remotedest:"
           fi
+
           rclone ${{ github.event.inputs.command }} \
             "$remotesource"${{ github.event.inputs.remotesourcepath }} \
             "$remotedest"${{ github.event.inputs.remotedestpath }} \
