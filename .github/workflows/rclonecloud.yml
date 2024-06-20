@@ -72,14 +72,14 @@ on:
         default: " --log-file ./.artifact/DEBUG.log"
         type: choice
         options:
-          - " "
+          - ""
           - " --log-file ./.artifact/DEBUG.log"
       flagsloglevel:
         description: "Select flags --log-level"
-        default: " "
+        default: ""
         type: choice
         options:
-          - " "
+          - ""
           - " --log-level DEBUG"
 jobs:
   rclonecloud:
