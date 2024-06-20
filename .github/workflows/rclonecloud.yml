@@ -120,34 +120,32 @@ jobs:
 
       - name: Run ${{ github.event.inputs.command }}
         run: |
-          remotesource="${{ github.event.inputs.remotesource }}"
-          if [[ -n "$remotesource" ]]; then
-            remotesource="$remotesource:"
+          argBuilder="${{ github.event.inputs.command }}"
+          if [[ -n "${{ github.event.inputs.remotesource }}" ]]; then
+            argBuilder="$argBuilder ${{ github.event.inputs.remotesource }}"
           fi
-          remotedest="${{ github.event.inputs.remotedest }}"
-          if [[ -n "$remotedest" ]]; then
-            remotedest="$remotedest:"
+          if [[ -n "${{ github.event.inputs.remotesourcepath }}" ]]; then
+            argBuilder="$argBuilder:${{ github.event.inputs.remotesourcepath }}"
           fi
-
-          if [[ -n "$remotedest" ]]; then
-            echo "WITH remotedest: $remotedest"
-            rclone ${{ github.event.inputs.command }} \
-              "$remotesource"${{ github.event.inputs.remotesourcepath }} \
-              "$remotedest"${{ github.event.inputs.remotedestpath }} \
-              ${{ github.event.inputs.flags }} \
-              ${{ github.event.inputs.toartifact }} \
-              ${{ github.event.inputs.flagslogfile }} \
-              ${{ github.event.inputs.flagsloglevel }} \             
-          else
-            echo "EMPTY remotedest"
-            rclone ${{ github.event.inputs.command }} \
-              "$remotesource"${{ github.event.inputs.remotesourcepath }} \
-              ${{ github.event.inputs.flags }} \
-              ${{ github.event.inputs.toartifact }} \
-              ${{ github.event.inputs.flagslogfile }} \
-              ${{ github.event.inputs.flagsloglevel }} \  
+          if [[ -n "${{ github.event.inputs.remotedest }}" ]]; then
+            argBuilder="$argBuilder ${{ github.event.inputs.remotedest }}"
           fi
-
+          if [[ -n "${{ github.event.inputs.remotedestpath }}" ]]; then
+            argBuilder="$argBuilder:${{ github.event.inputs.remotedestpath }}"
+          fi
+          if [[ -n "${{ github.event.inputs.flags }}" ]]; then
+            argBuilder="$argBuilder ${{ github.event.inputs.flags }}"
+          fi
+          if [[ -n "${{ github.event.inputs.toartifact }}" ]]; then
+            argBuilder="$argBuilder ${{ github.event.inputs.toartifact }}"
+          fi
+          if [[ -n "${{ github.event.inputs.flagslogfile }}" ]]; then
+            argBuilder="$argBuilder ${{ github.event.inputs.flagslogfile }}"
+          fi
+          if [[ -n "${{ github.event.inputs.flagsloglevel }}" ]]; then
+            argBuilder="$argBuilder ${{ github.event.inputs.flagsloglevel }}"
+          fi
+          echo "argBuilder::: $argBuilder"       
           cp /var/log/workflow.log ./.artifact/logs/
 
       - name: "Upload Artifact"
