@@ -74,6 +74,7 @@ jobs:
       - name: Decode and configure rclone from secrets
         run: |
           mkdir -p ~/.config/rclone
+          mkdir -p ./.artifact
           echo "${{ secrets.RCLONE_CONF_BASE64 }}" | base64 --decode > ~/.config/rclone/rclone.conf
 
       - name: Run ${{ github.event.inputs.command }}
