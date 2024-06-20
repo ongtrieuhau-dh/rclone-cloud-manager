@@ -69,18 +69,18 @@ on:
           - " > ./.artifact/output.txt"
       flagslogfile:
         description: "Select flags --log-file"
-        default: " --log-file ./.artifact/DEBUG.log"
+        default: ""
         type: choice
         options:
           - ""
-          - " --log-file ./.artifact/DEBUG.log"
+          - "--log-file ./.artifact/DEBUG.log"
       flagsloglevel:
         description: "Select flags --log-level"
         default: ""
         type: choice
         options:
           - ""
-          - " --log-level DEBUG"
+          - "--log-level DEBUG"
 jobs:
   rclonecloud:
     runs-on: ubuntu-latest
