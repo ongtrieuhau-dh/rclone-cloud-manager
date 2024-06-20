@@ -77,7 +77,8 @@ jobs:
       - name: Initialize jobs
         run: |
           mkdir -p ./.artifact
-          echo "NOWDATE=$(date +'%Y%m%d-%H%M')" >> $GITHUB_ENV
+          TZ='Asia/Bangkok' date +'%Y%m%d-%H%M' > date.txt
+          echo "NOWDATE=$(cat date.txt)" >> $GITHUB_ENV
 
       - name: Check Initialize jobs
         run: |
