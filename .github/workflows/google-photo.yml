@@ -48,6 +48,7 @@ jobs:
         run: |
           echo "The date variable is $NOWDATE"
           echo "env.NOWDATE is ${{ env.NOWDATE }}"
+          chmod +x ./google-photo/sync.sh
 
       - name: Install rclone offline
         run: |
