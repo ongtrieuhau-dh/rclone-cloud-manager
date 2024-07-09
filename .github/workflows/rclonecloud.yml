@@ -45,6 +45,8 @@ on:
           - ""
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+          - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
       remotesourcepath:
         description: "Remote source path"
       remotedest:
@@ -55,6 +57,8 @@ on:
           - ""
           - "onedrive-phoai@students.solano.edu"
           - "onedrive-ongtrieuhau861@23t5wj.onmicrosoft.com"
+          - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
       remotedestpath:
         description: "Remote dest path"
       flags:
