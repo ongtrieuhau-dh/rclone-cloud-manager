@@ -1,4 +1,4 @@
-name: rclonecloud
+name: googlephoto
 
 on:
   workflow_dispatch:
@@ -24,7 +24,7 @@ on:
           - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
           - "onedrive-ongtrieuhau861.s24ultra.002@gmail.com"
 jobs:
-  rclonecloud:
+  googlephoto:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
