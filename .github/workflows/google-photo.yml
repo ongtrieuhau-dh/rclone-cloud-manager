@@ -1,0 +1,72 @@
+name: rclonecloud
+
+on:
+  workflow_dispatch:
+    inputs:
+      remotesource:
+        description: "Select remote source"
+        default: ""
+        type: choice
+        options:
+          - ""
+          - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.002@gmail.com"
+      remotesourcepath:
+        description: "Remote source path"
+      remotedest:
+        description: "Select remote dest"
+        default: ""
+        type: choice
+        options:
+          - ""
+          - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.002@gmail.com"
+jobs:
+  rclonecloud:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize jobs
+        run: |
+          mkdir -p ./.artifact
+          TZ='Asia/Bangkok' date +'%Y%m%d-%H%M' > date.txt
+          echo "NOWDATE=$(cat date.txt)" >> $GITHUB_ENV
+          echo "github.event.inputs.remotesource: ${{ github.event.inputs.remotesource }}"
+          echo "github.event.inputs.remotesourcepath: ${{ github.event.inputs.remotesourcepath }}"
+          echo "github.event.inputs.remotedest: ${{ github.event.inputs.remotedest }}"
+          echo "github.event.inputs.remotedestpath: ${{ github.event.inputs.remotedestpath }}"
+          echo "github.event.inputs.flags: ${{ github.event.inputs.flags }}"
+          echo "github.event.inputs.toartifact: ${{ github.event.inputs.toartifact }}"
+          echo "github.event.inputs.flagslogfile: ${{ github.event.inputs.flagslogfile }}"
+          echo "github.event.inputs.flagsloglevel: ${{ github.event.inputs.flagsloglevel }}"
+
+      - name: Check Initialize jobs
+        run: |
+          echo "The date variable is $NOWDATE"
+          echo "env.NOWDATE is ${{ env.NOWDATE }}"
+
+      - name: Install rclone offline
+        run: |
+          sudo cp ./bin/rclone /usr/bin/
+          sudo chmod +x /usr/bin/rclone
+          rclone version
+
+      - name: Decode and configure rclone from secrets
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "${{ secrets.RCLONE_CONF_BASE64 }}" | base64 --decode > ~/.config/rclone/rclone.conf
+
+      - name: Run bash
+        run: ./google-photo/sync.sh
+
+      - name: "Upload Artifact"
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rclonecloud-artifact-${{ env.NOWDATE }}-${{ github.run_id }}
+          path: ./.artifact
+          retention-days: 5
