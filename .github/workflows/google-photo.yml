@@ -12,6 +12,7 @@ on:
           - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
           - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
           - "onedrive-ongtrieuhau861.s24ultra.002@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.003@gmail.com"
       remotesourcepath:
         description: "Remote source path"
       remotedest:
@@ -23,6 +24,7 @@ on:
           - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
           - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
           - "onedrive-ongtrieuhau861.s24ultra.002@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.003@gmail.com"
 jobs:
   googlephoto:
     runs-on: ubuntu-latest
