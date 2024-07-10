@@ -10,6 +10,7 @@ rclone lsjson $REMOTE1:album --dirs-only > albums.json
 # Đồng bộ và xóa từng album từ tài khoản thứ nhất sang tài khoản thứ hai
 albums=$(jq -r '.[].Path' albums.json)
 for album in $albums; do
+    album=$(echo $album | tr -d '"')
     echo "Syncing album: $album"
     # rclone sync googlephotos:album/"$album" /path/to/local/albums/"$album"
 done
