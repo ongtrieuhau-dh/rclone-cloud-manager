@@ -1,4 +1,4 @@
-name: googlephoto
+name: googlephotomediaall
 
 on:
   workflow_dispatch:
@@ -20,7 +20,7 @@ on:
           - "googlephoto-ongtrieuhau861.ip13pm@gmail.com"
           - "googlephoto-ongtrieuhau861.ip13pm.001@gmail.com"
 jobs:
-  googlephoto:
+  googlephotomediaall:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
