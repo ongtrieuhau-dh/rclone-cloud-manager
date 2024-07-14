@@ -9,20 +9,16 @@ on:
         type: choice
         options:
           - ""
-          - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.002@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.003@gmail.com"
+          - "googlephoto-ongtrieuhau861.ip13pm@gmail.com"
+          - "googlephoto-ongtrieuhau861.ip13pm.001@gmail.com"
       remotedest:
         description: "Select remote dest"
         default: ""
         type: choice
         options:
           - ""
-          - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.001@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.002@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.003@gmail.com"
+          - "googlephoto-ongtrieuhau861.ip13pm@gmail.com"
+          - "googlephoto-ongtrieuhau861.ip13pm.001@gmail.com"
 jobs:
   googlephoto:
     runs-on: ubuntu-latest
@@ -59,8 +55,8 @@ jobs:
           remotesource: ${{ github.event.inputs.remotesource }}
           remotedest: ${{ github.event.inputs.remotedest }}
         run: |
-          chmod +x ./google-photo/sync-by-inputs.sh
-          ./google-photo/sync-by-inputs.sh
+          chmod +x ./google-photo/sync-media-all.sh
+          ./google-photo/sync-media-all.sh
 
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
