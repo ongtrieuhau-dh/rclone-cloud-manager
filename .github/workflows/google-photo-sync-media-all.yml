@@ -11,6 +11,8 @@ on:
           - ""
           - "googlephoto-ongtrieuhau861.ip13pm@gmail.com"
           - "googlephoto-ongtrieuhau861.ip13pm.001@gmail.com"
+          - "googlephotos-services-ongtrieuhau861.ip13pm@gmail.com"
+          - "googlephotos-services-ongtrieuhau861.ip13pm.006@gmail.com"
       remotedest:
         description: "Select remote dest"
         default: ""
@@ -19,6 +21,8 @@ on:
           - ""
           - "googlephoto-ongtrieuhau861.ip13pm@gmail.com"
           - "googlephoto-ongtrieuhau861.ip13pm.001@gmail.com"
+          - "googlephotos-services-ongtrieuhau861.ip13pm@gmail.com"
+          - "googlephotos-services-ongtrieuhau861.ip13pm.006@gmail.com"
 jobs:
   googlephotomediaall:
     runs-on: ubuntu-latest
