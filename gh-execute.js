@@ -32,8 +32,11 @@ const executeMain = (async () => {
   try {
     execSync("gh --version");
     login();
-    fs.writeFileSync(v.tempPathBase64, fs.readFileSync(path.join(__dirname, "RCLONE_CONF_BASE64.gitignorefile.conf")).toString("base64"));
-    execSync(`gh secret set RCLONE_CONF_BASE64 -b"$(< ${v.nameFileTemp})" --repo ongtrieuhau-dh/rclone-cloud-manager `);
+    fs.writeFileSync(
+      v.tempPathBase64,
+      `RCLONE_CONF_BASE64 = ${fs.readFileSync(path.join(__dirname, "RCLONE_CONF_BASE64.gitignorefile.conf")).toString("base64")}`
+    );
+    execSync(`gh secret set RCLONE_CONF_BASE64 --env-file RCLONE_CONF_BASE64.tmp.gitignorefile --repo ongtrieuhau-dh/rclone-cloud-manager `);
     execSync(`gh auth logout`);
   } catch (error) {
     console.error(`ERR:::${error.message}`);

@@ -18,6 +18,7 @@ on:
           - ""
           - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
           - "onedrive-ongtrieuhau861.s24ultra.005@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.006@gmail.com"
 jobs:
   onedrivemoveto:
     runs-on: ubuntu-latest
