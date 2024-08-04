@@ -10,8 +10,6 @@ on:
         options:
           - ""
           - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.003@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.004@gmail.com"
       remotedest:
         description: "Select remote dest"
         default: ""
@@ -19,8 +17,7 @@ on:
         options:
           - ""
           - "onedrive-ongtrieuhau861.s24ultra@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.003@gmail.com"
-          - "onedrive-ongtrieuhau861.s24ultra.004@gmail.com"
+          - "onedrive-ongtrieuhau861.s24ultra.005@gmail.com"
 jobs:
   onedrivemoveto:
     runs-on: ubuntu-latest
