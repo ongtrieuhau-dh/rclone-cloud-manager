@@ -32,10 +32,14 @@ const executeMain = (async () => {
   try {
     execSync("gh --version");
     login();
-    fs.writeFileSync(
-      v.tempPathBase64,
-      `RCLONE_CONF_BASE64 = ${fs.readFileSync(path.join(__dirname, "RCLONE_CONF_BASE64.gitignorefile.conf")).toString("base64")}`
+    var contentFile = [];
+    contentFile.push(`RCLONE_CONF_BASE64 = ${fs.readFileSync(path.join(__dirname, "RCLONE_CONF_BASE64.gitignorefile.conf")).toString("base64")}`);
+    contentFile.push(
+      `RCLONE_CONF_BASE64_01_ongtrieuhau861ip13pm030 = ${fs
+        .readFileSync(path.join(__dirname, ".gitignorefile", "01-ongtrieuhau861.ip13pm.030@gmail.com.gitignorefile"))
+        .toString("base64")}`
     );
+    fs.writeFileSync(v.tempPathBase64, contentFile.join("\n"));
     execSync(`gh secret set RCLONE_CONF_BASE64 --env-file RCLONE_CONF_BASE64.tmp.gitignorefile --repo ongtrieuhau-dh/rclone-cloud-manager `);
     execSync(`gh auth logout`);
   } catch (error) {
@@ -43,7 +47,7 @@ const executeMain = (async () => {
   } finally {
     rNode._LOG(v);
     try {
-      fs.rmSync(v.tempPathBase64);
+      // fs.rmSync(v.tempPathBase64);
     } catch {}
   }
 })();
