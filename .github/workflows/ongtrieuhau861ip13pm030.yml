@@ -102,7 +102,7 @@ jobs:
             echo "$argBuilder"
           fi
           echo "[argBuilder] ==> $argBuilder"
-          rclone $argBuilder
+          rclone $argBuilder --auto-confirm -v
 
       - name: "Upload Artifact"
         uses: actions/upload-artifact@v4
