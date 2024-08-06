@@ -94,11 +94,11 @@ jobs:
         run: |
           argBuilder="${{ github.event.inputs.command }}"
           if [[ -n "${{ github.event.inputs.remotesource }}" ]]; then
-            argBuilder="${argBuilder} ${{ github.event.inputs.remotesource }} }}"
+            argBuilder="${argBuilder} ${{ github.event.inputs.remotesource }}"
             echo "$argBuilder"
           fi
           if [[ -n "${{ github.event.inputs.remotedest }}" ]]; then
-            argBuilder="${argBuilder} ${{ github.event.inputs.remotedest }} }}"
+            argBuilder="${argBuilder} ${{ github.event.inputs.remotedest }}"
             echo "$argBuilder"
           fi
           echo "[argBuilder] ==> $argBuilder"
