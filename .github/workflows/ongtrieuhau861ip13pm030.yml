@@ -1,4 +1,4 @@
-name: 01ongtrieuhau861ip13pm030
+name: ongtrieuhau861ip13pm030
 
 on:
   workflow_dispatch:
@@ -60,7 +60,7 @@ on:
           - "bucket03:"
           - "bucket04:"
 jobs:
-  01ongtrieuhau861ip13pm030:
+  ongtrieuhau861ip13pm030:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
