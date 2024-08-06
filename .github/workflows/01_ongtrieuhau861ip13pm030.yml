@@ -44,7 +44,7 @@ on:
         options:
           - ""
           - "bucket:"
-          - "photo:"
+          - "photo:upload"
           - "onedrive:"
           - "bucket03:"
           - "bucket04:"
@@ -55,7 +55,7 @@ on:
         options:
           - ""
           - "bucket:"
-          - "photo:"
+          - "photo:upload"
           - "onedrive:"
           - "bucket03:"
           - "bucket04:"
