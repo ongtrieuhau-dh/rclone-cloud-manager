@@ -53,6 +53,7 @@ const executeMain = (async () => {
       `RCLONE_CONF_BASE64_02_s24ultra030 = ${fs.readFileSync(`F:/o-photo-rclone/02ongtrieuhau861s24ultra030/config.conf`).toString("base64")}`
     );
     contentFile.push(`RCLONE_CONF_BASE64_05_s24ultra032 = ${fs.readFileSync(`F:/o-photo-rclone/05-s24ultra032/config.conf`).toString("base64")}`);
+    contentFile.push(`RCLONE_CONF_BASE64_06_ip13pm032 = ${fs.readFileSync(`F:/o-photo-rclone/06-ip13pm032/config.conf`).toString("base64")}`);
     fs.writeFileSync(v.tempPathBase64, contentFile.join("\n"));
     execSync(`gh secret set RCLONE_CONF_BASE64 --env-file RCLONE_CONF_BASE64.tmp.gitignorefile --repo ongtrieuhau-dh/rclone-cloud-manager `);
     execSync(`gh auth logout`);
