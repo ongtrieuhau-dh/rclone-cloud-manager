@@ -52,6 +52,9 @@ on:
           - "bucket:01 onedrive:"
           - "bucket:02 onedrive1:"
           - "bucket:03 onedrive2:"
+          - "bucket:01 photo:upload"
+          - "bucket:02 photo:upload"
+          - "bucket:03 photo:upload"
 
 jobs:
   ongtrieuhau861ip13pm031:
