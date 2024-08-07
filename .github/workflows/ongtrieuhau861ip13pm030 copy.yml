@@ -62,8 +62,8 @@ jobs:
           mkdir -p ./.artifact
           TZ='Asia/Bangkok' date +'%Y%m%d-%H%M' > date.txt
           echo "NOWDATE=$(cat date.txt)" >> $GITHUB_ENV
-          echo "github.event.inputs.remotesource: ${{ github.event.inputs.remotesource }}"
-          echo "github.event.inputs.remotedest: ${{ github.event.inputs.remotedest }}"
+          echo "github.event.inputs.command: ${{ github.event.inputs.command }}"
+          echo "github.event.inputs.para: ${{ github.event.inputs.para }}"
 
       - name: Check Initialize jobs
         run: |
@@ -79,7 +79,7 @@ jobs:
       - name: Decode and configure rclone from secrets
         run: |
           mkdir -p ~/.config/rclone
-          echo "${{ secrets.RCLONE_CONF_BASE64_01_ongtrieuhau861ip13pm030 }}" | base64 --decode > ~/.config/rclone/rclone.conf
+          echo "${{ secrets.RCLONE_CONF_BASE64_03_ongtrieuhau861ip13pm031 }}" | base64 --decode > ~/.config/rclone/rclone.conf
 
       - name: Run ${{ github.event.inputs.command }} ${{ github.event.inputs.para }}
         run: |
