@@ -49,6 +49,9 @@ on:
           - "bucket:01 bucket2:01"
           - "bucket:02 bucket2:02"
           - "bucket:03 bucket2:03"
+          - "bucket:01 onedrive:"
+          - "bucket:02 onedrive1:"
+          - "bucket:03 onedrive2:"
 
 jobs:
   ongtrieuhau861ip13pm031:
