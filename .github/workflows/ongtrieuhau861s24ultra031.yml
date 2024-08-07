@@ -58,7 +58,7 @@ on:
 
 jobs:
   ongtrieuhau861s24ultra031:
-    name: s24ultra031 ${{ github.event.inputs.command }} ${{ github.event.inputs.para }}
+    name: ${{ github.event.inputs.command }} ${{ github.event.inputs.para }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
