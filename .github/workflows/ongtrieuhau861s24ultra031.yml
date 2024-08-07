@@ -1,0 +1,101 @@
+name: ongtrieuhau861s24ultra031
+
+on:
+  workflow_dispatch:
+    inputs:
+      command:
+        description: "Select the rclone command to run"
+        required: true
+        default: "about"
+        type: choice
+        options:
+          - "about"
+          - "bisync"
+          - "copy"
+          - "copyto"
+          - "copyurl"
+          - "delete"
+          - "deletefile"
+          - "hashsum"
+          - "link"
+          - "listremotes"
+          - "ls"
+          - "lsd"
+          - "lsf"
+          - "lsjson"
+          - "lsl"
+          - "mkdir"
+          - "mount"
+          - "move"
+          - "moveto"
+          - "rmdir"
+          - "rmdirs"
+          - "selfupdate"
+          - "size"
+          - "sync"
+          - "test"
+          - "touch"
+          - "tree"
+          - "version"
+      para:
+        description: "Select para"
+        default: ""
+        type: choice
+        options:
+          - ""
+          - "bucket:01 bucket1:01"
+          - "bucket:02 bucket1:02"
+          - "bucket:03 bucket1:03"
+          - "bucket:01 bucket2:01"
+          - "bucket:02 bucket2:02"
+          - "bucket:03 bucket2:03"
+          - "bucket:01 onedrive:"
+          - "bucket:02 onedrive1:"
+          - "bucket:03 onedrive2:"
+          - "bucket:01 photo:upload"
+          - "bucket:02 photo:upload"
+          - "bucket:03 photo:upload"
+
+jobs:
+  ongtrieuhau861s24ultra031:
+    name: s24ultra031 ${{ github.event.inputs.command }} ${{ github.event.inputs.para }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Initialize jobs
+        run: |
+          mkdir -p ./.artifact
+          TZ='Asia/Bangkok' date +'%Y%m%d-%H%M' > date.txt
+          echo "NOWDATE=$(cat date.txt)" >> $GITHUB_ENV
+          echo "github.event.inputs.command: ${{ github.event.inputs.command }}"
+          echo "github.event.inputs.para: ${{ github.event.inputs.para }}"
+
+      - name: Check Initialize jobs
+        run: |
+          echo "The date variable is $NOWDATE"
+          echo "env.NOWDATE is ${{ env.NOWDATE }}"
+
+      - name: Install rclone offline
+        run: |
+          sudo cp ./bin/rclone /usr/bin/
+          sudo chmod +x /usr/bin/rclone
+          rclone version
+
+      - name: Decode and configure rclone from secrets
+        run: |
+          mkdir -p ~/.config/rclone
+          echo "${{ secrets.RCLONE_CONF_BASE64_04_ongtrieuhau861s24ultra031 }}" | base64 --decode > ~/.config/rclone/rclone.conf
+
+      - name: Run ${{ github.event.inputs.command }} ${{ github.event.inputs.para }}
+        run: |
+          rclone ${{ github.event.inputs.command }} ${{ github.event.inputs.para }} --auto-confirm -v
+
+      - name: "Upload Artifact"
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: rclonecloud-artifact-${{ env.NOWDATE }}-${{ github.run_id }}
+          path: ./.artifact
+          retention-days: 5

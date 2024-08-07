@@ -44,6 +44,11 @@ const executeMain = (async () => {
         .readFileSync(`F:/o-photo-rclone/03ongtrieuhau861ip13pm031/config.conf`)
         .toString("base64")}`
     );
+    contentFile.push(
+      `RCLONE_CONF_BASE64_04_ongtrieuhau861s24ultra031 = ${fs
+        .readFileSync(`F:/o-photo-rclone/04ongtrieuhau861s24ultra031/config.conf`)
+        .toString("base64")}`
+    );
     fs.writeFileSync(v.tempPathBase64, contentFile.join("\n"));
     execSync(`gh secret set RCLONE_CONF_BASE64 --env-file RCLONE_CONF_BASE64.tmp.gitignorefile --repo ongtrieuhau-dh/rclone-cloud-manager `);
     execSync(`gh auth logout`);
